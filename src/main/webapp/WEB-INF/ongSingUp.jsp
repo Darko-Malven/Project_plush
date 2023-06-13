@@ -57,23 +57,33 @@
     		</div>
   			</div>
 		</nav>
-	<div class="container">	
+	<div class="container mt-3 mb-4">
 		<div class="d-flex grid gap-4"> 
 			<div class="g-col-6 p-4 registro">
 				<h2 class="negrita header">Registrate</h2>
-				<form:form action="/register" method="post" modelAttribute="newUser">
+				<form:form action="/register_ong" method="post" modelAttribute="newOng">
 					<div>
-						<form:label class="mt-3" path="name">Nombre</form:label>
-						<form:input path="name" class="form-control"/>
-						<form:errors path="name" class="text-danger"/>
+						<form:label class="mt-3" path="orgaName">Nombre de la organización</form:label>
+						<form:input path="orgaName" class="form-control"/>
+						<form:errors path="orgaName" class="text-danger"/>
 					</div>
 					<div>
-						<form:label class="mt-3" path="lastName">Apellidos</form:label>
-						<form:input path="lastName" class="form-control"/>
-						<form:errors path="lastName" class="text-danger"/>
+						<form:label class="mt-3" path="acronym">Acronimo</form:label>
+						<form:input path="acronym" class="form-control"/>
+						<form:errors path="acronym" class="text-danger"/>
 					</div>
 					<div>
-						<form:label class="mt-3" path="email">Email</form:label>
+						<form:label class="mt-3" path="tel">Número de contacto</form:label>
+						<form:input path="tel" class="form-control"/>
+						<form:errors path="tel" class="text-danger"/>
+					</div>
+					<div>
+						<form:label class="mt-3" path="rut">E-Rut</form:label>
+						<form:input path="rut" class="form-control"/>
+						<form:errors path="rut" class="text-danger"/>
+					</div>
+					<div>
+						<form:label class="mt-3" path="email">Email de la organización</form:label>
 						<form:input path="email" class="form-control"/>
 						<form:errors path="email" class="text-danger"/>
 					</div>
@@ -87,21 +97,24 @@
 						<form:password path="confirm" class="form-control"/>
 						<form:errors path="confirm" class="text-danger"/>
 					</div>
-					<div class="d-flex mt-5">
+					
+					<div class="d-flex mt-3">
 						<input type="submit" class="btn btn-primary" value="Crear cuenta">
 						<div class="align-self-center">
-							<span>¿Eres una ONG? </span>
-							<a href="/inicia_sesion_ong">Registrate aquí</a>
+							<span>¿Eres una persona natural? </span>
+							<a href="/inicia_sesion">Registrate aquí</a>
 						</div>	
 					</div>
+					
 				</form:form>
+				
 			</div>
 			<div class="g-col-6 p-4 inicio ">
 				<h2 class="negrita header">Inicia sesión</h2>
 				<p class="text-danger">${error_login}</p>
-					<form action="/login" method="post">
+					<form action="/login_ong" method="post">
 						<div>
-							<label class="mt-3">Email</label>
+							<label class="mt-3">Email de la organización</label>
 							<input type="text" class="form-control" name="email"/>
 						</div>
 						<div>
@@ -113,6 +126,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<footer id="footer"
           class="text-center text-lg-start text-white"
           >

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.codingdojo.leonel.models.Organization;
 import com.codingdojo.leonel.models.Review;
 import com.codingdojo.leonel.models.User;
+import com.codingdojo.leonel.repository.OrganizationRepository;
 import com.codingdojo.leonel.repository.ReviewRepository;
 import com.codingdojo.leonel.repository.UserRepository;
 
@@ -18,6 +20,9 @@ public class AppServices {
 	private UserRepository userRepo;
 	@Autowired
 	private ReviewRepository reviewRepo;
+	@Autowired
+	private OrganizationRepository organizationRepo;
+	
 	public User register(User newUser, BindingResult result) {
 		
 		//Revisamos que el correo que recibimos no exista en nuestra tabla de usuarios
@@ -67,6 +72,57 @@ public class AppServices {
 		}
 		
 	}
+	
+	
+	public Organization registerOng(Organization newOng, BindingResult result) {
+		
+		//Revisamos que el correo que recibimos no exista en nuestra tabla de usuarios
+		String email = newOng.getEmail();
+		Organization isOng = organizationRepo.findByEmail(email); //NULL o Objeto Usuario
+		if(isOng != null) {
+			result.rejectValue("email", "Unique", "The email is already in use");
+		}
+		
+		String password = newOng.getPassword();
+		String confirm = newOng.getConfirm();
+		if(!password.equals(confirm)) { //! -> Lo contrario
+			result.rejectValue("confirm", "Matches", "The passwords don't match");
+		}
+		
+		if(result.hasErrors()) {
+			return null;
+		} else {
+			String pass_encript = BCrypt.hashpw(newOng.getPassword(), BCrypt.gensalt());
+			newOng.setPassword(pass_encript);
+			return organizationRepo.save(newOng);
+		}	
+		
+	}
+	
+	public Organization loginOng(String email, String password) {
+		
+		Organization ongExists = organizationRepo.findByEmail(email); //NULL o Objeto de User
+		if(ongExists == null) {
+			return null;
+		}
+		if(BCrypt.checkpw(password, ongExists.getPassword())) {
+			return ongExists;
+		} else {
+			return null;
+		}
+	}
+	
+	
+	
+	public Organization findOrganization(Long id) {
+		return organizationRepo.findById(id).orElse(null);
+	}
+	
+	
+	public Organization saveOrganization(Organization organization) {
+		return organizationRepo.save(organization);
+	}
+	
 	/*Encontrar un usuario en base a su id*/
 	public User findUser(Long id) {
 		return userRepo.findById(id).orElse(null);

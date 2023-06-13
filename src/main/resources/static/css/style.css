@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+body{
+	display:flex;
+	flex-direction:column;
+	justify-content: space-between;
+	height: 100vh;
+}
+
+.credit-card-div {
+    width: 500px;
+    height: 350px;
+}
+
+.credit-card-div  span { padding-top:10px; }
+
+
+.credit-card-div img { padding-top:30px; }
+
+.credit-card-div .small-font { font-size:9px; }
+
+.credit-card-div .pad-adjust { padding-top:10px; }
+
+#logo{
+	border-radius: 100px;
+	height: 65px;
+	width: 65px;
+}
+.nav-link{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 17px;
+	color: white;
+}
+
+.img-rounded{
+	width:83px;
+	height:70px;
+}
+
+.container-fluid{
+	width: 99%;
+	background-color: #019CA1;
+	border-radius: 15px;
+	border: 1px #006f72 solid;
+}
+
+#bienvenidoid{
+	color: black;
+}
+
+.bienvenida{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.fuente_inicio{
+	font-family: 'Montserrat', sans-serif;
+  	font-size: 16px;
+  	line-height: 1.5;
+  	color:white;
+}
+
+#fondoPrincipal{
+	background-image: url("https://cdn.discordapp.com/attachments/1110349945321553991/1112555048048791614/417933.jpg");
+	background-position: center;
+	background-repeat: no-repeat; 
+	background-size: cover;
+}
+
+.header {
+    color: black;
+    font-size: 32px;
+    
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+#mision{
+	width:800px;
+	border: 1px #006f72 solid;
+	background-color:#d9dffd7d;
+}
+
+#contacto{
+	width:800px;
+	border: 1px #006f72 solid;
+	background-color:#d9dffd7d;
+}
+.negrita{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#contenedores_textos{
+	background-color:#019CA1;
+	border: 1px #006f72 solid;
+	border-radius: 10px;
+}
+#donaciones_datos{
+	border: 1px #006f72 solid;
+	background-color:#d9dffd7d;
+}
+
+.iconosRRSS{
+	width:30px;
+	height:30px;
+	gap: 5px;
+}
+
+.iconoCorreo{
+	width:33px;
+	height:35px;
+}
+
+#footer{
+	background-color: #1c2331;
+	width: 100%;
+}
+.footer_sup{
+	background-color: white;
+}
+.text_footer_sup{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	color:black;
+}
+.registro{
+	border: 1px #006f72 solid;
+	width: 700px;
+	background-color:#d9dffd7d;
+}
+.inicio{
+	border: 1px #006f72 solid;
+	width: 700px;
+	background-color:#d9dffd7d;
+}
+
+.mainSquare{
+	background-color: #1c2331d4;
+}
+
+.fondoVector{
+    background-image: url("https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=996&t=st=1686085584~exp=1686086184~hmac=9bc93badddbafc96dbed7d46bc083d89f255b0a45a1d53555ad1fbc4a04547cc%22");
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.perfil {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.perfil img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.perfilBtn{
+    display: flex;
+      background-color: #d6d4d4;
+      margin: 5px;
+}
+
+.perfilBtn a{
+    margin: 10px;
+    margin-right: 10px;
+}
+.heigthPerfil{
+	margin-bottom: auto;
+}

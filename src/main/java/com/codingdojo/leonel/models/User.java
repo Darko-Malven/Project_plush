@@ -30,18 +30,24 @@ public class User {
 	@Size(min=2, message="Name must be at least 2 characters")
 	private String name;
 	@NotEmpty(message="Lastname is obligatory.")
-	@Size(min=2, message="Lastame must be at least 2 characters")
+	@Size(min=2, message="Lastname must be at least 2 characters")
 	private String lastName;
 	@NotEmpty(message="Email is obligatory.")
 	@Email
 	private String email;
 	@NotEmpty(message="Password is obligatory")
-	@Size(min=6,message="Password must be at least 6 characters")
+	
 	private String password;
 	@Transient
 	@NotEmpty(message="Password is obligatory")
-	@Size(min=6,message="Password must be at least 6 characters")
+	
 	private String confirm;
+	/*TIPOS DE USUARIO:
+	 1.-ADM
+	 2.-ORG
+	 3.-USER
+	 */
+	private Integer userType=3;
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -116,5 +122,12 @@ public class User {
 	public void setMessages(List<Review> messages) {
 		this.messages = messages;
 	}
+	public Integer getUserType() {
+		return userType;
+	}
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
+	
 	
 }

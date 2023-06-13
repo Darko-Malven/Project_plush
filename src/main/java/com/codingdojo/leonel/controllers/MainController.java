@@ -5,13 +5,14 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
+import com.codingdojo.leonel.models.Organization;
 import com.codingdojo.leonel.models.User;
 import com.codingdojo.leonel.services.AppServices;
 
@@ -21,50 +22,54 @@ public class MainController {
 	AppServices service;
 	
 	@GetMapping("/plush")
-	public String home() {
+	public String home(HttpSession session) {
+		session.getAttribute("userInSession");
+		
 		return "home.jsp";
 	}
-	
-	@GetMapping("/inicia_sesion")
-	public String index(@ModelAttribute ("newUser") User user) {
-		return "index.jsp";
+
+	@GetMapping("/nuestra-mision")
+	public String nuestraMision(HttpSession session) {
+		session.getAttribute("userInSession");
+		return "info.jsp";
 	}
-	@PostMapping("/register")
-	public String userRegister(@Valid @ModelAttribute ("newUser") User newUser,
-							   BindingResult result,
-							   HttpSession session) {
-		service.register(newUser, result);
-		if(result.hasErrors()) {
-			
-			return "index.jsp";
-		}
-		else {
-			//guardar objeto en sesion
-			session.setAttribute("userInSession", newUser);
+	
+	@GetMapping("/contactanos")
+	public String contacto(HttpSession session) {
+		session.getAttribute("userInSession");
+		return "info.jsp";
+	}
+	@GetMapping("/donaciones")
+	public String donaciones(HttpSession session) {
+		session.getAttribute("userInSession");
+		return "donaciones.jsp";
+	}
+	
+	@GetMapping("/perfil/{id}")
+	public String perfil(HttpSession session,Model model,
+						@PathVariable ("id") Long id) {
+		User userInSession = (User) session.getAttribute("userInSession");
+		if(userInSession==null) {
 			return "redirect:/plush";
 		}
-	}
-	@PostMapping("/login")
-	public String login(@RequestParam ("email") String email,
-						@RequestParam ("password") String password,
-						RedirectAttributes redirectAttributes,
-						HttpSession session) {
-		//enviar email y contraseña para q el servicio verifique que este correcto
-		User userLogin = service.login(email,password);
-		if(userLogin==null) {
-			redirectAttributes.addFlashAttribute("error_login", "The email/password is incorrect.");
-			return "redirect:/inicia_sesion";
-		}
-		else {
-			session.setAttribute("userInSession", userLogin);
-			return "redirect:/plush";  
-		}
-		 
+		User userId= service.findUser(id);
+		model.addAttribute("user",userId);
+		return "perfil.jsp";
 	}
 	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.removeAttribute("userInSession");
-		return "redirect:/plush";
+	
+	@GetMapping("/perfil_ong/{id}")
+	public String perfilONG(HttpSession session,Model model,
+							@PathVariable("id")Long id) {
+		Organization ongInSession = (Organization) session.getAttribute("userInSession");
+		
+		model.addAttribute("ong", ongInSession);
+		if(ongInSession==null) {
+			return "redirect:/plush";
+		}
+		
+		
+		return "perfilOng.jsp";
 	}
+	
 }

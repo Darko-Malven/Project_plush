@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>new User</title>
+<title>Quienes somos</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,59 +58,26 @@
     		</div>
   			</div>
 		</nav>
-	<div class="container">	
-		<div class="d-flex grid gap-4"> 
-			<div class="g-col-6 p-4 registro">
-				<h2 class="negrita header">Registrate</h2>
-				<form:form action="/register" method="post" modelAttribute="newUser">
-					<div>
-						<form:label class="mt-3" path="name">Nombre</form:label>
-						<form:input path="name" class="form-control"/>
-						<form:errors path="name" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="lastName">Apellidos</form:label>
-						<form:input path="lastName" class="form-control"/>
-						<form:errors path="lastName" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="email">Email</form:label>
-						<form:input path="email" class="form-control"/>
-						<form:errors path="email" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="password">Contraseña</form:label>
-						<form:password path="password" class="form-control"/>
-						<form:errors path="password" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="confirm">Confirmar Contraseña</form:label>
-						<form:password path="confirm" class="form-control"/>
-						<form:errors path="confirm" class="text-danger"/>
-					</div>
-					<div class="d-flex mt-5">
-						<input type="submit" class="btn btn-primary" value="Crear cuenta">
-						<div class="align-self-center">
-							<span>¿Eres una ONG? </span>
-							<a href="/inicia_sesion_ong">Registrate aquí</a>
-						</div>	
-					</div>
-				</form:form>
+	<div class="container">
+		<div class="d-flex justify-content-center flex-wrap">
+			<div class="g-col-6 p-4" id="mision">
+				<h1 class="header negrita">Quiénes somos</h1>
+				<h2 class="negrita">Lorem ipsum dolor sit amet consectetur, adipisicing elit</h2>
+				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint mollitia ea, ducimus,
+				 accusantium quod molestiae magnam exercitationem doloremque ipsum maiores quia maxime
+				 eius aliquam, quo id optio ex vitae ad?</p>
+				 <div class="d-flex justify-content-between p-auto">
+				 	<span class="text-white bg-opacity-50 p-2" id="contenedores_textos">Comprometidos con ayudar</span>
+				 	<span class="text-white bg-opacity-50 p-2" id="contenedores_textos">Apoyo</span>
+				 	<span class="text-white bg-opacity-50 p-2" id="contenedores_textos">Reponsables</span>
+				 </div>
 			</div>
-			<div class="g-col-6 p-4 inicio ">
-				<h2 class="negrita header">Inicia sesión</h2>
-				<p class="text-danger">${error_login}</p>
-					<form action="/login" method="post">
-						<div>
-							<label class="mt-3">Email</label>
-							<input type="text" class="form-control" name="email"/>
-						</div>
-						<div>
-							<label class="mt-3">Contraseña</label>
-							<input type="password" class="form-control" name="password"/>
-						</div>
-						<input type="submit" class="btn btn-primary mt-3" value="Ingresar">
-					</form>
+			<div class="g-col-6 p-4 mt-4" id="contacto">
+				<h1 class="header negrita">Contactanos</h1>
+				<h5>Correo electronico</h5>
+				<p><img class="iconoCorreo mt-3" src="/img/correo_icon.svg" alt="correo logo">tuayuda@codingdojo.cl</p>
+				<h5>Número telefonico</h5>
+				<p><img class="iconosRRSS" src="/img/telefono_icon.svg" alt="telefono logo">+56 (9) 1234 5678</p>
 			</div>
 		</div>
 	</div>
