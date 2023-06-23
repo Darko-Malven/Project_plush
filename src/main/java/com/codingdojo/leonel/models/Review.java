@@ -39,6 +39,10 @@ public class Review {
 	private Date updatedAt;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="organization_id")
+	private Organization ong_review;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User author;
 	

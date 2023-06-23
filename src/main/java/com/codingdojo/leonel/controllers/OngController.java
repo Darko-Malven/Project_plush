@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.codingdojo.leonel.models.Category;
 import com.codingdojo.leonel.models.Organization;
 import com.codingdojo.leonel.services.AppServices;
 
@@ -21,16 +23,19 @@ public class OngController {
 	AppServices service;
 	
 	@GetMapping("/inicia_sesion_ong")
-	public String index(@ModelAttribute ("newOng") Organization ong) {
+	public String index(@ModelAttribute ("newOng") Organization ong,Model model) {
+		model.addAttribute("category", Category.Categories);
+	    
 		return "ongSingUp.jsp";
 	}
 	@PostMapping("/register_ong")
 	public String ongRegister(@Valid @ModelAttribute ("newOng") Organization newOng,
-							   BindingResult result,
+							   BindingResult result,Model model,
 							   HttpSession session) {
 		service.registerOng(newOng, result);
+		model.addAttribute("category", Category.Categories);
 		if(result.hasErrors()) {
-			
+			model.addAttribute("category", Category.Categories);
 			return "ongSingUp.jsp";
 		}
 		else {

@@ -78,7 +78,6 @@ public class UserController {
 		User userEdit= service.findUser(id);
 		model.addAttribute("user", userEdit);
 		return "editar.jsp";
-		
 	}
 	
 	@PutMapping("/update")
@@ -93,7 +92,6 @@ public class UserController {
 			return "editar.jsp";
 		}
 		else {
-			
 			service.saveUser(userEdit);
 			return "redirect:/perfil/"+userEdit.getId();
 		}

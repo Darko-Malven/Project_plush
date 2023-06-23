@@ -16,56 +16,83 @@
 </head>
 <body class="fondoVector">
 	<nav class="navbar navbar-expand-lg bg-body-tertiary ">
-  			<div class="container-fluid">
-    			<a class="navbar-brand" href="/plush">
-    			<img id="logo" src="/img/logoDakota.png" alt="Dakota Logo">
-    			</a>
-    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      				<span class="navbar-toggler-icon"></span>
-    			</button>
-   			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      			<ul class="navbar-nav">
-        			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="#">Campañas</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/contactanos">Contactanos</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/donaciones">Dona</a>
-        			</li>
-        			<c:if test="${empty userInSession}">
-        				<li>
-        					<a class="nav-link" href="/inicia_sesion">Ingresar</a>
-        				</li>
-        			</c:if>
-        			<c:if test="${not empty userInSession}">
-        				<li>
-        				<a class="nav-link" href="#">Mi perfil</a>
-    					</li>
-    					<li>
-    					<a class="nav-link" href="/logout">Cerrar sesión</a>
-      					</li>
-      				</c:if>	
-      			</ul>
-    					
-    		</div>
-  			</div>
-		</nav>
+	  	<div class="container-fluid">
+	    			<a class="navbar-brand" href="/plush">
+	    			<img id="logo" src="/img/logoDakota.png" alt="Dakota Logo">
+	    			</a>
+	    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      				<span class="navbar-toggler-icon"></span>
+	    			</button>
+	   			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+	      			<ul class="navbar-nav menu">
+	        			<li class="nav-item">
+	          				<a class="nav-link selected" href="/plush">Inicio</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/campañas">Campañas</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/contactanos">Contactanos</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/donaciones">Dona</a>
+	        			</li>
+	        			<c:if test="${empty userInSession}">
+	        				<li>
+	        					<a class="nav-link" href="/inicia_sesion">Ingresar</a>
+	        				</li>
+	        			</c:if>
+	        			<c:if test="${not empty userInSession}">
+	        				<c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    				<c:if test="${userInSession.userType==2}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil_ong/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    					<li>
+		    					<a class="nav-link" href="/logout">Cerrar sesión</a>
+		      					</li>
+		      					
+	      				</c:if>	
+	      			</ul>
+	    					
+	    		</div>
+	  			</div>
+			</nav>
 	<div class="container">
 		<div class="d-flex justify-content-center flex-wrap">
 			<div class="g-col-6 p-4" id="mision">
 				<h1 class="header negrita">Quiénes somos</h1>
-				<h2 class="negrita">Lorem ipsum dolor sit amet consectetur, adipisicing elit</h2>
-				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint mollitia ea, ducimus,
-				 accusantium quod molestiae magnam exercitationem doloremque ipsum maiores quia maxime
-				 eius aliquam, quo id optio ex vitae ad?</p>
+				<p>Dakota es una plataforma en línea que reúne ONGs de
+                        diferentes categorías, incluyendo animalistas, sociales,
+                        humanistas y ecologistas. Nuestro objetivo es trabajar juntos para
+                        lograr un planeta mejor. Promovemos la colaboración entre estas
+                        organizaciones, aprovechando su experiencia y recursos para
+                        abordar de manera integral los desafíos globales. Únete a nosotros
+                        en este viaje hacia un futuro sostenible y equitativo.</p>
+                    <p>Nuestro enfoque se basa en la creencia de que los problemas
+                        del mundo no pueden resolverse de manera aislada. Reconocemos que
+                        las distintas categorías en las que nos centramos representan
+                        desafíos únicos y complejos, pero también vemos el potencial de
+                        sinergia y aprendizaje mutuo entre ellas. Al trabajar juntos,
+                        podemos lograr un impacto más significativo y duradero.</p>
+                    <p>En Dakota, nos esforzamos por ser transparentes y rendir
+                        cuentas. Comunicamos de manera clara y precisa nuestras
+                        actividades, así como los progresos y resultados alcanzados por
+                        las ONGs asociadas. Estamos comprometidos en establecer relaciones
+                        sólidas con nuestros usuarios y colaboradores, y valoramos sus
+                        contribuciones y retroalimentación para mejorar constantemente
+                        nuestra plataforma. Únete a Dakota en nuestro viaje hacia un
+                        futuro mejor. Juntos, podemos generar un impacto positivo y
+                        construir un mundo más justo, saludable y sostenible para las
+                        generaciones venideras. ¡Gracias por ser parte de Dakota!</p>
 				 <div class="d-flex justify-content-between p-auto">
 				 	<span class="text-white bg-opacity-50 p-2" id="contenedores_textos">Comprometidos con ayudar</span>
 				 	<span class="text-white bg-opacity-50 p-2" id="contenedores_textos">Apoyo</span>
@@ -135,9 +162,16 @@
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-            <p>
-              <a href="#!" class="text-white">Tu cuenta</a>
-            </p>
+            <c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
+	           <c:if test="${userInSession.userType==2}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
             <p>
               <a href="/donaciones" class="text-white">Donaciones</a>
             </p>
